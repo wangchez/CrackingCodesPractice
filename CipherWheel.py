@@ -1,10 +1,11 @@
 import string
+from random import randint
 
 
 class CipherWheel:
-    def __init__(self, key):
-        self.letters = list(string.ascii_uppercase)
-        self.key = key
+    def __init__(self, key=None):
+        self.letters = list(string.ascii_letters)
+        self.key = key or randint(0, len(self.letters))
 
     def encrypt(self, message):
         ciphers = ''
@@ -36,9 +37,9 @@ class CipherWheel:
 if __name__ == '__main__':
     cipher_Wheel = CipherWheel(int(input("input encryption key:")))
 
-    input_message = input("input plaintext:").upper()
+    input_message = input("input plaintext:")
 
-    encrypt_or_decrypt = input("Encrypt(e) or decrypt(d):").lower()
+    encrypt_or_decrypt = input("Encrypt(e) or decrypt(d):")
 
     if encrypt_or_decrypt == 'e':
         plaint_txt = cipher_Wheel.encrypt(input_message)
